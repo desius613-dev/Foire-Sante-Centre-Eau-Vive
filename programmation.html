@@ -14,6 +14,7 @@ background:#f4f6f9;
 margin:0;
 padding:0;
 color:#333;
+line-height:1.6;
 }
 
 header{
@@ -30,6 +31,7 @@ margin-bottom:10px;
 
 header h2{
 font-weight:normal;
+margin-bottom:20px;
 }
 
 .container{
@@ -59,6 +61,10 @@ padding-bottom:20px;
 border-bottom:1px solid #ddd;
 }
 
+.event:last-child{
+border-bottom:none;
+}
+
 .event h3{
 color:#16a34a;
 margin-bottom:10px;
@@ -66,6 +72,11 @@ margin-bottom:10px;
 
 ul{
 padding-left:20px;
+margin-top:10px;
+}
+
+li{
+margin-bottom:8px;
 }
 
 footer{
@@ -111,7 +122,8 @@ border-radius:10px;
 
 <h1>Foire Santé à l’Infini 2026</h1>
 
-<h2>UNE JOURNÉE POUR NOURRIR LA VIE 
+<h2>
+UNE JOURNÉE POUR NOURRIR LA VIE 
 DANS TOUTES SES DIMENSIONS
 </h2>
 
@@ -125,7 +137,7 @@ Cosmodôme de Laval | 📅 17 mai 2026 | ⏰ 10 h 00 – 18 h 00
 
 <div class="section">
 
-<h2> Début de la journée</h2>
+<h2>Début de la journée</h2>
 
 <div class="event">
 <h3>10 h 00 – 10 h 30 | Accueil des participants</h3>
@@ -137,18 +149,21 @@ Cosmodôme de Laval | 📅 17 mai 2026 | ⏰ 10 h 00 – 18 h 00
 </div>
 
 <div class="event">
-<h3>10 h 30 – 11 h 00 | Mot d’ouverture officiel | Podium  </h3>
+<h3>10 h 30 – 11 h 00 | Mot d’ouverture officiel | Podium</h3>
 <ul>
 <li>Maître de cérémonie du jour : monsieur Jerôme Dieuseul (mention des partenaires officiels, ambassadeurs, exposants, bénévoles du CEV de Laval et remerciements etc…)</li>
 <li>Mot de la coordonnatrice et présentation du comité organisateur de la Foire Santé à l’Infini 2026 : Dre Rose-Delande Mompremier</li>
-<li>Prière d’ouverture et de bénédiction : Pasteur Joseph Élysée Philippe, Centre Eau Vive de Laval </li>
+<li>Prière d’ouverture et de bénédiction : Pasteur Joseph Élysée Philippe, Centre Eau Vive de Laval</li>
 <li>Courte pièce musicale instrumentale</li>
 <li>Artistes invités : Samsara Arboite & Lorie Darla Rabel</li>
 </ul>
 </div>
 
+</div>
+
 <div class="section">
-<h2> Activités du matin</h2>
+
+<h2>Activités du matin</h2>
 
 <div class="event">
 <h3>11 h 00 – 12 h 00 | Conférence sur la nutrition | Activité présentée en salle Marc Garneau</h3>
@@ -157,10 +172,11 @@ Cosmodôme de Laval | 📅 17 mai 2026 | ⏰ 10 h 00 – 18 h 00
 <li>Conférencière : Élisabeth Stephie Calixte</li>
 <li>Période de questions / réponses</li>
 <li>Séance de photos</li>
+</ul>
 </div>
 
 <div class="event">
-<h3>11 h 00 – 12 h 30 | Activités principales | Zone exposants | Zone réservée </h3>
+<h3>11 h 00 – 12 h 30 | Activités principales | Zone exposants | Zone réservée</h3>
 <ul>
 <li>Visite libre des kiosques des exposants en continu</li>
 <li>Zone d’ateliers de peinture pour tous les âges animée par Mme Doris Jean-Baptiste de D Créations – Salle Chris Hadfield</li>
@@ -174,51 +190,58 @@ Cosmodôme de Laval | 📅 17 mai 2026 | ⏰ 10 h 00 – 18 h 00
 <ul>
 <li>Dépistage (glycémie, tension artérielle, IMC)</li>
 <li>Conseils nutritionnels et sensibilisation (diabète, HTA, santé mentale)</li>
-<li>Conseils sur l’alimentation, exercice </li>
+<li>Conseils sur l’alimentation, exercice</li>
 </ul>
 </div>
 
+</div>
+
 <div class="section">
-<h2> Après-midi</h2>
+
+<h2>Après-midi</h2>
 
 <div class="event">
 <h3>12 h 00 – 13 h 30 | Ateliers de formation | Activité présentée en salle Marc Garneau | Action Collective pour l’Harmonisation de l’Identité des Immigrants (ACHII)</h3>
 <ul>
-<li>Thème : « Les défis psychologiques liés à l’immigration et à l’adaptation 
-culturelle »</li>
-</li>
+<li>Thème : « Les défis psychologiques liés à l’immigration et à l’adaptation culturelle »</li>
 <li>Séance de photos</li>
 </ul>
 </div>
 
 <div class="event">
-<h3>12 h 00 – 17 h 00 | Ouverture de l’espace gourmand |  Salle Roberta Bondar</h3>
+<h3>12 h 00 – 17 h 00 | Ouverture de l’espace gourmand | Salle Roberta Bondar</h3>
 </div>
 
 <div class="event">
-<h3>13 h 45 – 14 h 30 | | Conférence | Naturopathe | Activité présentée en salle Marc Garneau</h3>
+<h3>13 h 45 – 14 h 30 | Conférence | Naturopathe | Activité présentée en salle Marc Garneau</h3>
 <ul>
-<li>Conférencières : Mme Marie Yvette Cangé et Mme Rachelle Toussaint
-Thème : « L’œil de l’aigle – Vigilance et signaux du corps »
-</li>
-<li>Période de questions | Séance de photos   </li>
+<li>Conférencières : Mme Marie Yvette Cangé et Mme Rachelle Toussaint</li>
+<li>Thème : « L’œil de l’aigle – Vigilance et signaux du corps »</li>
+<li>Période de questions | Séance de photos</li>
 </ul>
 </div>
 
 <div class="event">
 <h3>15 h 00 – 15 h 30 | Intervention des officiels & Animation | Podium</h3>
+<ul>
 <li>Introduction du maître de cérémonie du jour</li>
 <li>Allocution des invités officiels</li>
 <li>Remerciements des officiels par le maître de cérémonie du jour</li>
-<div class="event">
+</ul>
+</div>
 
-<h3>15	h 30 – 16 h 30 | Animation | Activités interactives & Divertissement en parallèle | Zone réservée</h3> 
-<li>Activités interactives et divertissement (Jeux de cartes, bingo, dominos,  jeux de Dames, jeux d’échec, jeux éducatifs interactifs, Monopoly, etc…)</li>
+<div class="event">
+<h3>15 h 30 – 16 h 30 | Animation | Activités interactives & Divertissement en parallèle | Zone réservée</h3>
+<ul>
+<li>Activités interactives et divertissement (Jeux de cartes, bingo, dominos, jeux de Dames, jeux d’échec, jeux éducatifs interactifs, Monopoly, etc…)</li>
 <li>Zone d’ateliers de peinture pour tous les âges, animée par Mme Doris Jean-Baptiste de D Créations – Salle Chris Hadfield</li>
 <li>Témoignages des participants</li>
 <li>Quiz santé et 2e tirage</li>
 <li>Séance de photos en continu</li>
-  
+</ul>
+</div>
+
+<div class="event">
 <h3>15 h 30 – 16 h 30 | Conférence sur la santé mentale | Activité présentée en salle Marc Garneau</h3>
 <ul>
 <li>Thème : « Bien-être psychologique et prévention des troubles chroniques »</li>
@@ -228,24 +251,30 @@ Thème : « L’œil de l’aigle – Vigilance et signaux du corps »
 </ul>
 </div>
 
+<div class="event">
 <h3>15 h 30 – 16 h 30 | Interlude | Animation | Activités en parallèle | Podium</h3>
 <ul>
-<li>Courte pièce musicale instrumentale 
-<li>Artistes invités : Samsara Arboite & Lorie Darla Rabel</li> 
+<li>Courte pièce musicale instrumentale</li>
+<li>Artistes invités : Samsara Arboite & Lorie Darla Rabel</li>
 <li>Quiz santé et 3e tirage</li>
 <li>Visite libre des kiosques des exposants en continu</li>
-  
-<div class="event">
-<h3>16 h 30 – 17 h 30 | | Animation culturelle | Activités en parallèle | Podium</h3>
-<ul>
-<li>Allocution à propos de la date du 18 mai dans l’histoire d’Haïti<li>
-<li>Commémoration & hommage à la « Journée du drapeau haïtien »<li>    
-<li>Chants de circonstances, etc…<li>
-<li>Hymne national d’Haïti : La Dessalinienne<li>
 </ul>
 </div>
 
+<div class="event">
+<h3>16 h 30 – 17 h 30 | Animation culturelle | Activités en parallèle | Podium</h3>
+<ul>
+<li>Allocution à propos de la date du 18 mai dans l’histoire d’Haïti</li>
+<li>Commémoration & hommage à la « Journée du drapeau haïtien »</li>
+<li>Chants de circonstances, etc…</li>
+<li>Hymne national d’Haïti : La Dessalinienne</li>
+</ul>
+</div>
+
+</div>
+
 <div class="section">
+
 <h2>Mot de clôture | Podium</h2>
 
 <div class="event">
