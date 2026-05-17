@@ -1,312 +1,580 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Foire Santé à l'Infini 2026</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Programmation — Foire Santé à l'Infini 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body{
-font-family: Arial, sans-serif;
-background:#f4f6f9;
-margin:0;
-padding:0;
-color:#333;
-line-height:1.6;
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f4ef;
+    color: #1a1a1a;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: #0c2c1a;
+    color: white;
+    padding: .9rem 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+
+  .site-header .logo {
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .site-header .logo span {
+    display: block;
+    font-size: .68rem;
+    font-weight: 300;
+    opacity: .65;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: #0c2c1a;
+    color: white;
+    text-align: center;
+    padding: 3.5rem 2rem 3rem;
+    border-bottom: 4px solid #c9a84c;
+  }
+  .hero h1 {
+    font-size: clamp(1.5rem, 4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: .4rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+  }
+  .hero h2 {
+    font-size: clamp(.85rem, 2vw, 1.05rem);
+    font-weight: 300;
+    opacity: .75;
+    margin-bottom: 1.8rem;
+    font-style: italic;
+  }
+  .hero-meta {
+    display: inline-flex;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 4px;
+    overflow: hidden;
+    font-size: .8rem;
+    flex-wrap: wrap;
+  }
+  .hero-meta span {
+    padding: .45rem 1.1rem;
+    border-right: 1px solid rgba(255,255,255,.22);
+    color: rgba(255,255,255,.82);
+  }
+  .hero-meta span:last-child { border-right: none; }
+
+  /* ── WRAPPER ── */
+  .wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 1.2rem 5rem;
+  }
+
+  /* ── PERIOD LABEL ── */
+  .period-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2.2rem 0 .9rem;
+  }
+  .period-header h3 {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #0c2c1a;
+    white-space: nowrap;
+    background: #cde8d5;
+    padding: .32rem .95rem;
+    border-radius: 3px;
+  }
+  .period-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #c8c8c0;
+  }
+
+  /* ── EVENT CARD ── */
+  .event-card {
+    background: #ffffff;
+    border-radius: 6px;
+    margin-bottom: .65rem;
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    overflow: hidden;
+    border: 1px solid #e2e2db;
+    box-shadow: 0 1px 3px rgba(0,0,0,.05); 
+    border-left: 4px solid transparent;
+    transition: border-left-color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .event-card:hover {
+  border-left-color: #1a6b3c;
 }
 
-header{
-background:linear-gradient(135deg,#0c4a6e,#16a34a);
-color:white;
-padding:40px 20px;
-text-align:center;
-}
+  /* LEFT: time column */
+  .event-time {
+    background: #eef2ee;
+    border-right: 1px solid #dde6de;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem .4rem;
+    text-align: center;
+    gap: .15rem;
+    flex-shrink: 0;
+  }
+  .event-time .t-start {
+    font-size: .88rem;
+    font-weight: 700;
+    color: #0c2c1a;
+    line-height: 1;
+  }
+  .event-time .t-sep {
+    font-size: .55rem;
+    color: #c9a84c;
+    line-height: 1.2;
+  }
+  .event-time .t-end {
+    font-size: .88rem;
+    font-weight: 700;
+    color: #0c2c1a;
+    line-height: 1;
+  }
 
-header h1{
-font-size:42px;
-margin-bottom:10px;
-}
+  /* RIGHT: content column */
+  .event-content {
+    padding: .9rem 1.1rem;
+  }
+  .event-type {
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: .2rem;
+  }
+  .event-title {
+    font-size: .98rem;
+    font-weight: 700;
+    color: #0c2c1a;
+    margin-bottom: .15rem;
+    line-height: 1.3;
+  }
+  .event-lieu {
+    font-size: .68rem;
+    color: #c9a84c;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    margin-bottom: .5rem;
+  }
+  .event-desc {
+    font-size: .81rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .event-desc p {
+    margin-bottom: .25rem;
+  }
+  .event-desc p:last-child { margin-bottom: 0; }
+  .event-desc strong { color: #1a1a1a; font-weight: 600; }
 
-header h2{
-font-weight:normal;
-margin-bottom:20px;
-}
+  /* ── FOOTER ── */
+  footer {
+    background: #0c2c1a;
+    color: rgba(255,255,255,.55);
+    text-align: center;
+    padding: 2.2rem 1.5rem;
+    font-size: .78rem;
+    border-top: 3px solid #c9a84c;
+  }
+  footer strong { color: #c9a84c; }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:20px;
-}
-
-.section{
-background:white;
-padding:25px;
-margin-bottom:25px;
-border-radius:12px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-.section h2{
-color:#0c4a6e;
-border-bottom:3px solid #16a34a;
-padding-bottom:10px;
-margin-bottom:20px;
-}
-
-.event{
-margin-bottom:25px;
-padding-bottom:20px;
-border-bottom:1px solid #ddd;
-}
-
-.event:last-child{
-border-bottom:none;
-}
-
-.event h3{
-color:#16a34a;
-margin-bottom:10px;
-}
-
-ul{
-padding-left:20px;
-margin-top:10px;
-}
-
-li{
-margin-bottom:8px;
-}
-
-footer{
-background:#0c4a6e;
-color:white;
-text-align:center;
-padding:25px;
-margin-top:40px;
-}
-
-.badge{
-display:inline-block;
-background:#16a34a;
-color:white;
-padding:8px 15px;
-border-radius:20px;
-margin-top:10px;
-font-weight:bold;
-}
-
-img.header-img{
-max-width:200px;
-display:block;
-margin:0 auto 20px auto;
-border-radius:10px;
-}
-
-img.footer-img{
-max-width:150px;
-display:block;
-margin:15px auto 0 auto;
-border-radius:10px;
-}
-
+  @media (max-width: 520px) {
+    .event-card { grid-template-columns: 68px 1fr; }
+    .event-time .t-start,
+    .event-time .t-end { font-size: .75rem; }
+    .hero-meta { flex-direction: column; }
+    .hero-meta span { border-right: none; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .hero-meta span:last-child { border-bottom: none; }
+  }
 </style>
 </head>
-
 <body>
 
-<header>
+<!-- ─ SITE HEADER ─ -->
+<header class="site-header">
 
-<img class="header-img" src="photo.jpg" alt="Foire Santé à l’Infini 2026">
+  <img 
+    src="https://lh3.googleusercontent.com/d/12ILIGDY3Eit7WWnJhWnj1kE0g2IUdCD2"
+    alt="Logo Foire Santé à l'Infini" 
+    style="height: 50px; width: auto; margin-right: 1rem;"
+    height="120"
+    width="120"
+  />
 
-<h1>Foire Santé à l’Infini 2026</h1>
-
-<h2>
-UNE JOURNÉE POUR NOURRIR LA VIE 
-DANS TOUTES SES DIMENSIONS
-</h2>
-
-<div class="badge">
-Cosmodôme de Laval | 📅 17 mai 2026 | ⏰ 10 h 00 – 18 h 00
-</div>
-
+  <div class="logo">
+    Foire Santé à l'Infini 2026
+    <span>Cosmodôme de Laval</span>
+  </div>
 </header>
 
-<div class="container">
-
-<div class="section">
-
-<h2>Début de la journée</h2>
-
-<div class="event">
-<h3>10 h 00 – 10 h 30 | Accueil des participants</h3>
-<ul>
-<li>Enregistrement et vérification des billets</li>
-<li>Remises Bracelets d’identification et coupons aux visiteurs (2 coupons par billet)</li>
-<li>Musique d’ambiance</li>
-</ul>
+<!-- ─ HERO ─ -->
+<div class="hero">
+  <h1>Une Journée pour Nourrir la Vie<br>dans toutes ses dimensions</h1>
+  <h2>Programmation de la journée</h2>
+  <div class="hero-meta">
+    <span>📅 Dimanche 17 mai 2026</span>
+    <span>🕙 10 h 00 – 18 h 00</span>
+    <span>📍 Cosmodôme de Laval</span>
+  </div>
 </div>
 
-<div class="event">
-<h3>10 h 30 – 11 h 00 | Mot d’ouverture officiel | Podium</h3>
-<ul>
-<li>Maître de cérémonie du jour : monsieur Jerôme Dieuseul (mention des partenaires officiels, ambassadeurs, exposants, bénévoles du CEV de Laval et remerciements etc…)</li>
-<li>Mot de la coordonnatrice et présentation du comité organisateur de la Foire Santé à l’Infini 2026 : Dre Rose-Delande Mompremier</li>
-<li>Prière d’ouverture et de bénédiction : Pasteur Joseph Élysée Philippe, Centre Eau Vive de Laval</li>
-<li>Courte pièce musicale instrumentale</li>
-<li>Artistes invités : Samsara Arboite & Lorie Darla Rabel</li>
-</ul>
-</div>
+<!-- ─ CONTENT ─ -->
+<div class="wrapper">
 
-</div>
+  <!-- ══ DÉBUT ══════════════════════════════════ -->
+  <div class="period-header"><h3>Début</h3></div>
 
-<div class="section">
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">10h00</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">10h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Accueil</div>
+      <div class="event-title">Accueil des participants</div>
+      <div class="event-lieu">Entrée</div>
+      <div class="event-desc">
+        <p>Enregistrement et vérification des billets</p>
+        <p>Remise des bracelets d'identification et des coupons <strong>(2 coupons par billet)</strong></p>
+        <p>Musique d'ambiance</p>
+      </div>
+    </div>
+  </div>
 
-<h2>Activités du matin</h2>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">10h30</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">11h00</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Ouverture officielle</div>
+      <div class="event-title">Mot d'ouverture officiel</div>
+      <div class="event-lieu">Podium</div>
+      <div class="event-desc">
+        <p>🎤 <strong>Maître de cérémonie :</strong> M. Jerôme Dieuseul — mention des partenaires officiels, ambassadeurs, exposants, bénévoles du CEV de Laval et remerciements</p>
+        <p>🎙️ <strong>Mot de la coordonnatrice &amp; présentation du comité organisateur :</strong> Dre Rose-Delande Mompremier</p>
+        <p>🙏 <strong>Prière d'ouverture et de bénédiction :</strong> Pasteur Joseph Élysée Philippe — Centre Eau Vive de Laval</p>
+        <p>🎵 <strong>Courte pièce musicale instrumentale :</strong> Samsara Arboite &amp; Lorie Darla Rabel</p>
+      </div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>11 h 00 – 12 h 00 | Conférence sur la nutrition | Activité présentée en salle Marc Garneau</h3>
-<ul>
-<li>Thème : Comment lire les étiquettes nutritionnelles</li>
-<li>Conférencière : Élisabeth Stephie Calixte</li>
-<li>Période de questions / réponses</li>
-<li>Séance de photos</li>
-</ul>
-</div>
+  <!-- ══ MATIN ══════════════════════════════════ -->
+  <div class="period-header"><h3>Matin</h3></div>
 
-<div class="event">
-<h3>11 h 00 – 12 h 30 | Activités principales | Zone exposants | Zone réservée</h3>
-<ul>
-<li>Visite libre des kiosques des exposants en continu</li>
-<li>Zone d’ateliers de peinture pour tous les âges animée par Mme Doris Jean-Baptiste de D Créations – Salle Chris Hadfield</li>
-<li>Activités interactives et divertissement (jeux de cartes, bingo, dominos, jeux de Dames, jeux d’échec, jeux éducatifs interactifs, Monopoly, etc…)</li>
-<li>Séances de photos en continu</li>
-</ul>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">11h00</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">12h00</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Conférence — Nutrition</div>
+      <div class="event-title">Comment lire les étiquettes nutritionnelles</div>
+      <div class="event-lieu">Salle Marc Garneau</div>
+      <div class="event-desc">
+        <p>🎙️ <strong>Mme Élisabeth Stephie Calixte,</strong> nutritionniste invitée</p>
+        <p>Période de questions / réponses</p>
+        <p>Séance de photos</p>
+      </div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>11 h 00 – 12 h 30 | Coin santé | Activités secondaires en parallèle | Zone exposants</h3>
-<ul>
-<li>Dépistage (glycémie, tension artérielle, IMC)</li>
-<li>Conseils nutritionnels et sensibilisation (diabète, HTA, santé mentale)</li>
-<li>Conseils sur l’alimentation, exercice</li>
-</ul>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">11h00</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">12h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Activités principales — En continu</div>
+      <div class="event-title">Visite des kiosques &amp; activités interactives</div>
+      <div class="event-lieu">Zone exposants · Zone réservée</div>
+      <div class="event-desc">
+        <p>Visite libre des kiosques des exposants en continu</p>
+        <p>🎨 Ateliers de peinture pour tous les âges — <strong>Mme Doris Jean-Baptiste, D Créations</strong> — Salle Chris Hadfield</p>
+        <p>Jeux de cartes · bingo · dominos · jeux de Dames · jeux d'échecs · jeux éducatifs interactifs · Monopoly, etc.</p>
+        <p>Séance de photos en continu</p>
+      </div>
+    </div>
+  </div>
 
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">11h00</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">12h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Coin Santé — Activités secondaires en parallèle</div>
+      <div class="event-title">Dépistage &amp; conseils santé</div>
+      <div class="event-lieu">Zone exposants</div>
+      <div class="event-desc">
+        <p>Dépistage : glycémie · tension artérielle · IMC</p>
+        <p>Conseils nutritionnels et sensibilisation : diabète · HTA · santé mentale</p>
+        <p>Conseils sur l'alimentation et l'exercice</p>
+      </div>
+    </div>
+  </div>
 
-<div class="section">
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">11h00</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">12h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Interlude — Divertissement en parallèle</div>
+      <div class="event-title">Animation musicale · Quiz santé · 1er tirage</div>
+      <div class="event-lieu">Podium</div>
+      <div class="event-desc">
+        <p>🎵 <strong>Samsara Arboite &amp; Lorie Darla Rabel</strong> — animation douce</p>
+        <p>Quiz santé et 1er tirage</p>
+        <p>Espace détente et bien-être</p>
+      </div>
+    </div>
+  </div>
 
-<h2>Après-midi</h2>
+  <!-- ══ APRÈS-MIDI ══════════════════════════════ -->
+  <div class="period-header"><h3>Après-midi</h3></div>
 
-<div class="event">
-<h3>12 h 00 – 13 h 30 | Ateliers de formation | Activité présentée en salle Marc Garneau | Action Collective pour l’Harmonisation de l’Identité des Immigrants (ACHII)</h3>
-<ul>
-<li>Thème : « Les défis psychologiques liés à l’immigration et à l’adaptation culturelle »</li>
-<li>Séance de photos</li>
-</ul>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">12h00</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">13h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Atelier de formation</div>
+      <div class="event-title">Les défis psychologiques liés à l'immigration et à l'adaptation culturelle</div>
+      <div class="event-lieu">Salle Marc Garneau</div>
+      <div class="event-desc">
+        <p>🏛️ <strong>Action Collective pour l'Harmonisation de l'Identité des Immigrants (ACHII)</strong></p>
+        <p>Séance de photos</p>
+      </div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>12 h 00 – 17 h 00 | Ouverture de l’espace gourmand | Salle Roberta Bondar</h3>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">12h00</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">17h00</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Restauration</div>
+      <div class="event-title">Ouverture de l'espace gourmand</div>
+      <div class="event-lieu">Salle Roberta Bondar</div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>13 h 45 – 14 h 30 | Conférence | Naturopathe | Activité présentée en salle Marc Garneau</h3>
-<ul>
-<li>Conférencières : Mme Marie Yvette Cangé et Mme Rachelle Toussaint</li>
-<li>Thème : « L’œil de l’aigle – Vigilance et signaux du corps »</li>
-<li>Période de questions | Séance de photos</li>
-</ul>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">13h45</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">14h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Conférence — Naturopathe</div>
+      <div class="event-title">L'œil de l'aigle – Vigilance et signaux du corps</div>
+      <div class="event-lieu">Salle Marc Garneau</div>
+      <div class="event-desc">
+        <p>🎙️ <strong>Mme Marie Yvette Cangé</strong></p>
+        <p>🎙️ <strong>Mme Rachelle Toussaint</strong></p>
+        <p>Période de questions / réponses</p>
+        <p>Séance de photos</p>
+      </div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>15 h 00 – 15 h 30 | Intervention des officiels & Animation | Podium</h3>
-<ul>
-<li>Introduction du maître de cérémonie du jour</li>
-<li>Allocution des invités officiels</li>
-<li>Remerciements des officiels par le maître de cérémonie du jour</li>
-</ul>
-</div>
+   <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">14h40</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">15h25</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Conférence — La Santé des Femmes</div>
+      <div class="event-title">Santé mentale et charge émmotionnelle chez les femmes</div>
+      <div class="event-lieu">Salle Marc Garneau</div>
+      <div class="event-desc">
+        <p>🎙️ <strong>Dr Harry-Max Prochette</strong>Médecin de Famille</p>
+        <p>Période de questions / réponses</p>
+        <p>Séance de photos</p>
+      </div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>15 h 30 – 16 h 30 | Animation | Activités interactives & Divertissement en parallèle | Zone réservée</h3>
-<ul>
-<li>Activités interactives et divertissement (Jeux de cartes, bingo, dominos, jeux de Dames, jeux d’échec, jeux éducatifs interactifs, Monopoly, etc…)</li>
-<li>Zone d’ateliers de peinture pour tous les âges, animée par Mme Doris Jean-Baptiste de D Créations – Salle Chris Hadfield</li>
-<li>Témoignages des participants</li>
-<li>Quiz santé et 2e tirage</li>
-<li>Séance de photos en continu</li>
-</ul>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">15h25</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">15h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Intervention des officiels &amp; Animation</div>
+      <div class="event-title">Allocution des invités officiels</div>
+      <div class="event-lieu">Podium</div>
+      <div class="event-desc">
+        <p>Introduction par le maître de cérémonie du jour</p>
+        <p>Allocution des invités officiels</p>
+        <p>Remerciements des officiels par le maître de cérémonie du jour</p>
+      </div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>15 h 30 – 16 h 30 | Conférence sur la santé mentale | Activité présentée en salle Marc Garneau</h3>
-<ul>
-<li>Thème : « Bien-être psychologique et prévention des troubles chroniques »</li>
-<li>Conférencière : Dre Launie Badette</li>
-<li>Période de questions et réponses</li>
-<li>Séance de photos</li>
-</ul>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">15h30</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">16h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Animation — Activités interactives &amp; Divertissement en parallèle</div>
+      <div class="event-title">Activités interactives · Témoignages · 2e tirage</div>
+      <div class="event-lieu">Zone réservée</div>
+      <div class="event-desc">
+        <p>Jeux de cartes · bingo · dominos · jeux de Dames · jeux d'échecs · jeux éducatifs interactifs · Monopoly, etc.</p>
+        <p>🎨 Ateliers de peinture pour tous les âges — <strong>Mme Doris Jean-Baptiste, D Créations</strong> — Salle Chris Hadfield</p>
+        <p>Témoignages des participants</p>
+        <p>Quiz santé et 2e tirage</p>
+        <p>Séance de photos en continu</p>
+      </div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>15 h 30 – 16 h 30 | Interlude | Animation | Activités en parallèle | Podium</h3>
-<ul>
-<li>Courte pièce musicale instrumentale</li>
-<li>Artistes invités : Samsara Arboite & Lorie Darla Rabel</li>
-<li>Quiz santé et 3e tirage</li>
-<li>Visite libre des kiosques des exposants en continu</li>
-</ul>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">15h30</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">16h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Conférence — Santé mentale</div>
+      <div class="event-title">Bien-être psychologique et prévention des troubles chroniques</div>
+      <div class="event-lieu">Salle Marc Garneau</div>
+      <div class="event-desc">
+        <p>🎙️ <strong>Dre Launie Badette,</strong> psychologue</p>
+        <p>Période de questions / réponses</p>
+        <p>Séance de photos</p>
+      </div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>16 h 30 – 17 h 30 | Animation culturelle | Activités en parallèle | Podium</h3>
-<ul>
-<li>Allocution à propos de la date du 18 mai dans l’histoire d’Haïti</li>
-<li>Commémoration & hommage à la « Journée du drapeau haïtien »</li>
-<li>Chants de circonstances, etc…</li>
-<li>Hymne national d’Haïti : La Dessalinienne</li>
-</ul>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">15h30</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">16h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Interlude — Animation en parallèle</div>
+      <div class="event-title">Animation musicale · Quiz santé · 3e tirage</div>
+      <div class="event-lieu">Podium</div>
+      <div class="event-desc">
+        <p>🎵 <strong>Samsara Arboite &amp; Lorie Darla Rabel</strong></p>
+        <p>Quiz santé et 3e tirage</p>
+        <p>Visite libre des kiosques des exposants en continu</p>
+      </div>
+    </div>
+  </div>
 
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">16h30</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">17h30</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Animation culturelle — Activités en parallèle</div>
+      <div class="event-title">Commémoration de la Journée du drapeau haïtien</div>
+      <div class="event-lieu">Podium</div>
+      <div class="event-desc">
+        <p>🇭🇹 Allocution à propos de la date du 18 mai dans l'histoire d'Haïti</p>
+        <p>Commémoration &amp; hommage à la <strong>Journée du drapeau haïtien</strong></p>
+        <p>Chants de circonstances</p>
+        <p>🎵 Hymne national d'Haïti : <em>La Dessalinienne</em></p>
+      </div>
+    </div>
+  </div>
 
-<div class="section">
+  <!-- ══ CLÔTURE ══════════════════════════════════ -->
+  <div class="period-header"><h3>Clôture</h3></div>
 
-<h2>Mot de clôture | Podium</h2>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">17h30</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">18h00</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Mot de clôture</div>
+      <div class="event-title">Clôture officielle de la Foire Santé à l'Infini 2026</div>
+      <div class="event-lieu">Podium</div>
+      <div class="event-desc">
+        <p>🎤 Résumé des moments forts de la journée — <strong>Maître de cérémonie du jour</strong></p>
+        <p>Dernière chance pour les participants de visiter les kiosques et de se faire dépister</p>
+        <p>Remerciements des invités officiels, partenaires officiels, ambassadeurs et bénévoles du CEV de Laval</p>
+        <p>🎙️ <strong>Dre Maryline Laguerre,</strong> Directrice du Département de la Santé — CEV de Laval</p>
+        <p>Réseautage et prises de photos finales</p>
+      </div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>17 h 30 – 18 h 00 | Mot de clôture</h3>
-<ul>
-<li>Résumé des moments forts de la journée de la foire : Maître de cérémonie du jour</li>
-<li>Dernière chance pour les participants de visiter les kiosques et de se faire dépister</li>
-<li>Remerciements des invités officiels, partenaires officiels, ambassadeurs et remerciements des bénévoles du CEV de Laval</li>
-<li>Mot de la directrice du Département de la Santé - CEV: Dre Maryline Laguerre</li>
-<li>Réseautage et prises de photos finales</li>
-</ul>
-</div>
+  <div class="event-card">
+    <div class="event-time">
+      <span class="t-start">18h00</span>
+      <span class="t-sep">▼</span>
+      <span class="t-end">19h00</span>
+    </div>
+    <div class="event-content">
+      <div class="event-type">Fin de l'événement</div>
+      <div class="event-title">Démontage des kiosques</div>
+    </div>
+  </div>
 
-<div class="event">
-<h3>18 h 00 | Fin de l’évènement</h3>
-</div>
+</div><!-- /wrapper -->
 
-<div class="event">
-<h3>18 h 00 – 19 h 00 | Démontage des kiosques</h3>
-</div>
-
-</div>
-
-</div>
-
+<!-- ─ FOOTER ─ -->
 <footer>
-
-<h3>Foire Santé à l’Infini 2026</h3>
-
-<img class="footer-img" src="photo.jpg" alt="Foire Santé à l’Infini 2026">
-
+  <p><strong>Foire Santé à l'Infini 2026</strong></p>
+  <p style="margin-top:.35rem">Cosmodôme de Laval · Dimanche 17 mai 2026 · 10 h 00 – 18 h 00</p>
+  <p style="margin-top:.35rem">Organisé par le <strong>Comité de Foire Santé 2026</strong></p>
 </footer>
 
 </body>
 </html>
+
